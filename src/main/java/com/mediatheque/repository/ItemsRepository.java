@@ -1,5 +1,6 @@
 package com.mediatheque.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,7 +16,7 @@ public interface ItemsRepository extends JpaRepository<Items, Long> {
 	
 	// Nb total items qui ont des copies dispo
 	@Query("select i from Items i where i.exemplaires > 0")
-	public List<Items> findDisponible();
+	public List<Items> isDisponible();
 	
 	// Voir item en fct du type
 	@Query("from Dvd")
@@ -26,5 +27,6 @@ public interface ItemsRepository extends JpaRepository<Items, Long> {
 	
 	@Query("from Livres")
 	public List<Items> findAllLivres();
+
 	
 }
