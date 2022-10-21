@@ -1,6 +1,7 @@
 package com.mediatheque.entity;
 
 import java.util.HashSet;
+import javax.persistence.Id;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 //creation de la table
 @Table(name="utilisateur")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "utilisateur_sequence_generator")
 	@SequenceGenerator(name = "utilisateur_sequence_generator", allocationSize = 1)
@@ -30,6 +31,21 @@ public class User {
 	
 	@OneToMany(mappedBy = "user")
     private Set<Emprunt> empruntItems = new HashSet<>();
+	
+	public User(){
+		
+	}
+	
+	public User(Long id, String email, String mdp, String prenom, String nom, Set<Emprunt> empruntItems) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.mdp = mdp;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.empruntItems = empruntItems;
+	}
+
 
 	public Long getId() {
 		return id;

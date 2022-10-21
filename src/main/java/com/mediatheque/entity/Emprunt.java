@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="emprunt")
 public class Emprunt {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emprunt_sequence_generator")
 	@SequenceGenerator(name = "emprunt_sequence_generator", allocationSize = 1)
@@ -43,6 +43,19 @@ public class Emprunt {
     @ManyToMany
     @JoinColumn(name="items_id")
     private List<Items> items;
+    
+	public Emprunt() {
+		
+	}
+	public Emprunt(Long id, LocalDateTime date_emprunt, LocalDateTime date_retour, User user, List<Items> items) {
+		super();
+		this.id = id;
+		this.date_emprunt = date_emprunt;
+		this.date_retour = date_retour;
+		this.user = user;
+		this.items = items;
+	}
+
 
 	public Long getId() {
 		return id;

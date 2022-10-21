@@ -2,15 +2,15 @@ package com.mediatheque.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.*;
 
+import javax.persistence.*;
+import javax.persistence.Transient;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
 @Table(name="items")
 public class Items {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence_generator")
 	@SequenceGenerator(name = "item_sequence_generator", allocationSize = 1)
@@ -20,10 +20,22 @@ public class Items {
 	private String titres;
 	
 	@Column(name= "exemplaires", nullable=false)
-	private String exemplaires;
+	private Long exemplaires;
 	
 	@Column(name= "date_parution", nullable=false)
 	private LocalDate dateParution;
+	
+	public Items() {
+	}
+	
+	//constructeur pour réutiliser
+	public Items(Long id, String titres, Long exemplaires, LocalDate dateParution) {
+		super();
+		this.id = id;
+		this.titres = titres;
+		this.exemplaires = exemplaires;
+		this.dateParution = dateParution;
+	}
 
 	public Long getId() {
 		return id;
@@ -41,11 +53,11 @@ public class Items {
 		this.titres = titres;
 	}
 
-	public String getExemplaires() {
+	public Long getExemplaires() {
 		return exemplaires;
 	}
 
-	public void setExemplaires(String exemplaires) {
+	public void setExemplaires(Long exemplaires) {
 		this.exemplaires = exemplaires;
 	}
 
@@ -56,5 +68,11 @@ public class Items {
 	public void setDateParution(LocalDate dateParution) {
 		this.dateParution = dateParution;
 	}
+	
+	@Transient
+	boolean isDisponible() {
+		return exemplaires > 0;
+	}
+
 
 }
