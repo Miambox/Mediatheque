@@ -37,7 +37,7 @@ public class Emprunt {
 	private LocalDateTime date_retour;
 	
 	@ManyToOne
-    @JoinColumn(name="utilisateur_id")
+    @JoinColumn(name="utilisateur_id", referencedColumnName ="id")
     private User user;
     
     @ManyToMany

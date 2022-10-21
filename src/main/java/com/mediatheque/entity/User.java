@@ -21,15 +21,15 @@ public class User {
 	@Column(name= "mdp", nullable=false)
 	private String mdp;
 	
-	//on va hasher le nom + prénom
+
 	@Column(name= "prenom", nullable=false)
 	private String prenom;
 	
 	@Column(name= "nom", nullable=false)
 	private String nom;
 	
-	@OneToMany//(mappedBy = "utilisateur")
-    private Set<Emprunt> empruntItems = new HashSet<Emprunt>();
+	@OneToMany(mappedBy = "user")
+    private Set<Emprunt> empruntItems = new HashSet<>();
 
 	public Long getId() {
 		return id;
