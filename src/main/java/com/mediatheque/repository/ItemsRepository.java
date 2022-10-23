@@ -1,5 +1,6 @@
 package com.mediatheque.repository;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -11,22 +12,31 @@ import com.mediatheque.entity.Items;
 import com.mediatheque.entity.CD;
 import com.mediatheque.entity.Dvd;
 import com.mediatheque.entity.Livres;
+
 @Repository
 public interface ItemsRepository extends JpaRepository<Items, Long> {
 	
-	// Nb total items qui ont des copies dispo
-	@Query("select i from Items i where i.exemplaires > 0")
-	public List<Items> isDisponible();
+	//Tri des items en fonction de la date de parution (comprise entre 0 et 7j pour les nouveautés
+//	@Query("FROM Items WHERE date <= date_parution <= : date + 7 ")
+//	List<Items> findAllItemsByDateParution();
+//	
+	//Nb total items qui ont des copies dispo
+	@Query("FROM Items WHERE exemplaires > 0")
+    List<Items> FindAllItemsByNbExemplaires();
 	
-	// Voir item en fct du type
-	@Query("from Dvd")
-	public List<Items> findAllDvd();
+	//Voir TOUT
+	@Query("FROM Items")
+	List<Items> findAllItems();
 	
-	@Query("from CD")
-	public List<Items> findAllCD();
+	// Voir items en fct du type
 	
-	@Query("from Livres")
-	public List<Items> findAllLivres();
+	@Query("FROM Dvd")
+	List<Items> findAllDvd();
+	
+	@Query("FROM CD")
+	List<Items> findAllCD();
+	
+	@Query("FROM Livres")
+	List<Items> findAllLivres();
 
-	
 }
