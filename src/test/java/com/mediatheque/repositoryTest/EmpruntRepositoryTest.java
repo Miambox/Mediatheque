@@ -20,10 +20,12 @@ public class EmpruntRepositoryTest {
 	@Test
 	public void findEmpruntById() {
 		User user = new User();
-		user.setId(2L);
+		//User avec ID 2 (cest le seul qui emprunte)
+		user.setId((long) 2);
 
 		List<Emprunt> findResult = empruntRepository.findEmpruntById(user);
 		System.out.println("Les emprunts de cet user sont" + findResult);
+		//Vrai seulement si user a emprunté
 		assertTrue(findResult.size() > 0);
 	}
 }

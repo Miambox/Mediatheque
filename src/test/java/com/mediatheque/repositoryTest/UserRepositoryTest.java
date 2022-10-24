@@ -16,9 +16,9 @@ public class UserRepositoryTest {
 	private UserRepository userRepository; 
 
 	@Test
-	public void should_find_user_by_email() {
+	public void FindUserByMail() {
 		Optional<User> findUser = userRepository.findByEmail("mia@gmail.com");
-		assertEquals("mia", findUser.get().getNom());
+		assertEquals(3, findUser.get().getId());
 	}
 
 
