@@ -11,5 +11,5 @@ import com.mediatheque.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 //	Trouver un user pour un login
-	public User findByEmail(String email);
+	Optional<User> findByEmail(String email);
 }
