@@ -30,9 +30,6 @@ public class Emprunt {
 	@Column(name= "date_emprunt", nullable=false)
 	private LocalDateTime date_emprunt;
 	
-	//@Column(name= "nb_items", nullable=false)
-	//private Instant nb_items;
-	
 	@Column(name= "date_retour", nullable=false)
 	private LocalDateTime date_retour;
 	

@@ -16,16 +16,6 @@ public class ItemRepositoryTest {
 	@Autowired
 	ItemsRepository itemsRepository;
 
-	//Test par date
-//	@Test
-//	void testFindByDateParution() {
-//		Calendar cal = Calendar.getInstance();
-//		cal.set(2017, 04, 22);
-//		List<Items> response = itemsRepository.findAllItemsByDateParution();
-//		System.out.println("Nombre de nouveautés : " + response);
-//		assertEquals(4, response.size());
-//	}
-
 	@Test
 	public void testFindItemsByNbExemplaires() {
 		List<Items> response = itemsRepository.FindAllItemsByNbExemplaires();

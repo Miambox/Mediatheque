@@ -16,10 +16,7 @@ import com.mediatheque.entity.Livres;
 @Repository
 public interface ItemsRepository extends JpaRepository<Items, Long> {
 	
-	//Tri des items en fonction de la date de parution (comprise entre 0 et 7j pour les nouveautés
-//	@Query("FROM Items WHERE date <= date_parution <= : date + 7 ")
-//	List<Items> findAllItemsByDateParution();
-//	
+	
 	//Nb total items qui ont des copies dispo
 	@Query("FROM Items WHERE exemplaires > 0")
     List<Items> FindAllItemsByNbExemplaires();

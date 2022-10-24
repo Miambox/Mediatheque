@@ -13,6 +13,6 @@ import com.mediatheque.entity.User;
 @Repository
 public interface EmpruntRepository extends JpaRepository<Emprunt, Long> {
 	//Trouver un user avec son ID + tous les emprunts associés
-	@Query("SELECT e FROM Emprunt e WHERE e.user= :user")
-	List<Emprunt> findEmpruntById(User user);
+//	@Query("SELECT utilisateur_id FROM Emprunt UNION SELECT id FROM Utilisateur")
+//	List<Emprunt> findEmpruntById(User user);
 }
