@@ -19,7 +19,7 @@ public interface ItemsRepository extends JpaRepository<Items, Long> {
 	
 	
 	//Nb total items qui ont des copies dispo
-	@Query("FROM Items WHERE exemplaires > 0")
+	@Query("FROM Items i WHERE i.exemplaires > 0")
     List<Items> FindAllItemsByNbExemplaires();
 	
 	//Voir TOUT
